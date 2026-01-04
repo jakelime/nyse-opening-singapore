@@ -13,6 +13,7 @@ DEFAULT_CONFIG = {
         "bell_filepath": "~/apps/nyse-opening-singapore/resources/bell.wav",
         "log_dirpath": "~/apps/nyse-opening-singapore/logs/",
         "log_level": "INFO",
+        "is_disabled": False,
     }
 }
 
@@ -48,6 +49,9 @@ def create_default_config():
     config_section["log_dirpath"] = DEFAULT_CONFIG["config"]["log_dirpath"]
 
     config_section["log_level"] = DEFAULT_CONFIG["config"]["log_level"]
+
+    config_section.add(tomlkit.comment("Sometimes, you need to disable this app"))
+    config_section["is_disabled"] = DEFAULT_CONFIG["config"]["is_disabled"]
 
     doc["config"] = config_section
 

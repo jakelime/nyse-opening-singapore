@@ -3,10 +3,12 @@ import pytz
 import holidays
 import logging
 from . import utils
+from .config import settings
 
 # Get logger (it will inherit config from setup_logging in cli.py)
 logger = logging.getLogger(__name__)
 
+cfg = settings["config"]
 
 def run_market_check():
     ny_tz = pytz.timezone("America/New_York")
@@ -32,7 +34,9 @@ def run_market_check():
 
     # Opening Time Check
     # Matches 09:30 AM ET
-    if ny_now.hour == 9 and ny_now.minute == 30:
+    if cfg['is_disabled']:
+        logger.info("User config `is_disabled=True`")
+    elif ny_now.hour == 9 and ny_now.minute == 30:
         logger.info("MARKET OPEN! Triggering bell.")
         utils.play_bell()
     else:
