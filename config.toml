@@ -1,8 +1,0 @@
-# Configuration for NYSE Opening Bell
-
-[config]
-# Path to the sound file to play
-bell_filepath = "~/apps/nyse-opening-singapore/resources/bell.wav"
-# Directory where logs will be stored
-log_dirpath = "~/apps/nyse-opening-singapore/logs/"
-log_level = "INFO"
